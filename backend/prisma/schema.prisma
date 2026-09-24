@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model app_user {
+  id        Int    @id
+  username  String @unique @db.VarChar(50)
+  full_name String @db.VarChar(120)
+  role      String @db.VarChar(30)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model equipment {
+  id               Int                @id
+  tag_no           String             @unique @db.VarChar(30)
+  name             String             @db.VarChar(120)
+  location         String             @db.VarChar(60)
+  criticality      String             @db.Char(1)
+  next_due_date    DateTime           @db.Date
+  deferral_request deferral_request[]
+}
+
+model deferral_request {
+  id           Int       @id @default(autoincrement())
+  equipment_id Int
+  old_due_date DateTime  @db.Date
+  new_due_date DateTime  @db.Date
+  reason       String    @db.VarChar(200)
+  need_manager String    @db.VarChar(1)
+  status       String    @db.VarChar(1)
+  create_date  DateTime  @default(now()) @db.Timestamp(0)
+  create_by    Int
+  modify_date  DateTime? @db.Timestamp(0)
+  modify_by    Int?
+  equipment    equipment @relation(fields: [equipment_id], references: [id])
+}
