@@ -97,7 +97,7 @@ export default function RequestForm() {
     try {
       setLoading(true);
 
-      await axios.post("/requests", {
+      const response = await axios.post("/requests", {
         equipment_id: Number(equipmentId),
         new_due_date: newDueDate.toLocaleDateString("en-CA"),
         reason: reason,
@@ -106,6 +106,7 @@ export default function RequestForm() {
       Swal.fire({
         icon: "success",
         title: "ยื่นคำขอเรียบร้อย",
+        text: `เลขที่เอกสาร Doc-${String(response.data.id).padStart(3, "0")}`,
         confirmButtonText: "ตกลง",
         confirmButtonColor: "#0284c7",
       });

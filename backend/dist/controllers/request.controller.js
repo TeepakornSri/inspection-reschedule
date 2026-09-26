@@ -24,6 +24,18 @@ let RequestController = class RequestController {
     create(req, body) {
         return this.requestService.create(req.user, body);
     }
+    getPending() {
+        return this.requestService.getPending();
+    }
+    getHistory() {
+        return this.requestService.getHistory();
+    }
+    approve(req, id) {
+        return this.requestService.approve(req.user, id);
+    }
+    reject(req, id) {
+        return this.requestService.reject(req.user, id);
+    }
 };
 exports.RequestController = RequestController;
 __decorate([
@@ -34,6 +46,34 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], RequestController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)('pending'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], RequestController.prototype, "getPending", null);
+__decorate([
+    (0, common_1.Get)('history'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], RequestController.prototype, "getHistory", null);
+__decorate([
+    (0, common_1.Patch)(':id/approve'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Number]),
+    __metadata("design:returntype", void 0)
+], RequestController.prototype, "approve", null);
+__decorate([
+    (0, common_1.Patch)(':id/reject'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Number]),
+    __metadata("design:returntype", void 0)
+], RequestController.prototype, "reject", null);
 exports.RequestController = RequestController = __decorate([
     (0, common_1.Controller)('requests'),
     (0, common_1.UseGuards)(user_guard_1.UserGuard),

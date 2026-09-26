@@ -31,6 +31,7 @@ export default function Navbar() {
             <NavLink to='/' end className={menuClass}>รายการอุปกรณ์</NavLink>
             <NavLink to='/request' className={menuClass}>ยื่นคำขอ</NavLink>
             <NavLink to='/pending' className={menuClass}>รออนุมัติ</NavLink>
+             <NavLink to='/history' className={menuClass}>ประวัติคำขอ</NavLink>
           </nav>
         </div>
 
