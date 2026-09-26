@@ -10,7 +10,7 @@ export function checkNeedManager(
   maxDate.setUTCDate(maxDate.getUTCDate() + 30);
 
   if (newDueDate > maxDate) return true;
-  if (approvedCount >= 2) return true;
+  if (approvedCount >= 1) return true;
 
   return false;
 }

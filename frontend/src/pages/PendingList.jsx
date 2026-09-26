@@ -128,10 +128,11 @@ export default function PendingList() {
   };
 
   const columnDefs = [
-     {
+        {
       field: 'id',
       headerName: 'เลขที่เอกสาร',
       width: 130,
+      sort: 'desc',
       valueFormatter: (params) => `Doc-${String(params.value).padStart(3, '0')}`,
     },
     {
@@ -182,7 +183,7 @@ export default function PendingList() {
       cellRenderer: (params) => (
         <span
           className={`px-3 py-1 rounded-full text-xs font-semibold ${
-            params.value >= 3 ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'
+            params.value >= 2 ? 'bg-rose-100 text-rose-700' : 'bg-sky-100 text-sky-700'
           }`}
         >
           {params.value}
