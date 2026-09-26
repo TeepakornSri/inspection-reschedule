@@ -6,20 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.RequestModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const equipment_module_1 = require("./modules/equipment.module");
-const request_module_1 = require("./modules/request.module");
-let AppModule = class AppModule {
+const request_controller_1 = require("../controllers/request.controller");
+const request_service_1 = require("../services/request.service");
+const prisma_service_1 = require("../models/prisma.service");
+let RequestModule = class RequestModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.RequestModule = RequestModule;
+exports.RequestModule = RequestModule = __decorate([
     (0, common_1.Module)({
-        imports: [equipment_module_1.EquipmentModule, request_module_1.RequestModule],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [request_controller_1.RequestController],
+        providers: [request_service_1.RequestService, prisma_service_1.PrismaService],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], RequestModule);
+//# sourceMappingURL=request.module.js.map

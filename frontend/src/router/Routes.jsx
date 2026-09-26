@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../components/MainLayout';
 import EquipmentList from '../pages/EquipmentList';
+import RequestForm from '../pages/RequestForm';
 
 const router = createBrowserRouter([
     {
@@ -8,6 +9,14 @@ const router = createBrowserRouter([
         element: (
             <MainLayout>
                 <EquipmentList />
+            </MainLayout>
+        ),
+    },
+    {
+        path: '/request',
+        element: (
+            <MainLayout>
+                <RequestForm />
             </MainLayout>
         ),
     },
